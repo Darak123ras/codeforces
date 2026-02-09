@@ -9,11 +9,11 @@ public class CalculatingFunction{
         sc.close();
     }
     private static long solve(long n){
-        long ans=0;
-        for(long i=1;i<=n;i++){
-            if(i%2==0) ans+=i;
-            else ans-=i;
+        if (n % 2 == 0) {
+            return (n/2);
+        } else {
+            return -(n+1)/2;
         }
-        return ans;
+        
     }
 }
