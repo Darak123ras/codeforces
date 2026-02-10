@@ -5,32 +5,36 @@ public class Magnet{
     public static void main(String args[]){
         Scanner sc=new Scanner(System.in);
         int t=sc.nextInt();
-        String s="";
-        while(t-->0){
-            s=sc.nextLine();
+        StringBuilder s=new StringBuilder();
+        while(t>=0){
+            String st=sc.nextLine();
+            s.append(st).append(" ");
+            t--;
         }
-        String str[]=s.split(" ");
-        int i=0,n=str.length;
+        int ans=solve(s.toString());
+        System.out.println(ans);
+        sc.close();
+    }
+    private static int solve(String s){
+        
+        int n=s.length();
+        String[] str=s.trim().split(" ");
         StringBuilder res=new StringBuilder();
-        while(i<n-1){
-            boolean space=true;
-            String s1=str[i];
-            String s2=str[i+1];
+        for(int i=1;i<str.length;i++){
             
+            String s1=str[i-1];
+            String s2=str[i];
             if(s1.charAt(s1.length()-1)!=s2.charAt(0)){
-                space=false;
-            }
-            if(space){
                 res.append(s1);
-                res.append(" ");
             }else{
                 res.append(s1);
+                res.append(" ");
             }
         }
         res.append(str[str.length-1]);
-        String res1=res.toString();
-        String []res2=res1.split(" ");
-        System.out.println(res2.length);
-        sc.close();
+        s=res.toString();
+        String[] s2=s.split(" ");
+
+        return s2.length;
     }
 }
