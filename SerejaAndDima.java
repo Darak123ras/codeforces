@@ -19,31 +19,24 @@ public class SerejaAndDima{
         int sereja=0;
         int dima=0;
         int i=0,j=n-1;
-        while(i<j){
-            while(ar[i]!=Integer.MIN_VALUE) i++;
-            while(ar[j]!=Integer.MIN_VALUE) j--;
-            if(i>=n) break;
-            
-            if(ar[i]>=ar[j]){
-                sereja+=ar[i];
-                ar[i]=Integer.MIN_VALUE;
-                i++;
-            }else{
-                sereja+=ar[j];
-                ar[j]=Integer.MIN_VALUE;
-                j--;
-            }
-            
-            if(ar[i]>=ar[j]){
-                dima+=ar[i];
-                ar[i]=Integer.MIN_VALUE;
-                i++;
-            }else{
-                dima+=ar[j];
-                ar[j]=Integer.MIN_VALUE;
-                j--;
+        boolean serejaTurn = true;
+
+        while (i <= j) {
+            int chosen;
+
+            if (ar[i] > ar[j]) {
+                chosen = ar[i++];
+            } else {
+                chosen = ar[j--];
             }
 
+            if (serejaTurn) {
+                sereja += chosen;
+            } else {
+                dima += chosen;
+            }
+
+            serejaTurn = !serejaTurn; 
         }
         res[0]=sereja;
         res[1]=dima;
